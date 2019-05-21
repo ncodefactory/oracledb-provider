@@ -1,0 +1,46 @@
+{
+  "name": "oracledb-provider",
+  "version": "0.0.1",
+  "private": false,
+  "license": "MIT",
+  "author": {
+    "name": "Bartosz Solarski",
+    "email": "bartosz.solarski@hotmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ncodefactory/oracledb-provider"
+  },
+  "main": "./dist/index.js",
+  "scripts": {
+    "compile": "shx rm -rf .compiled && babel src --out-dir .compiled --source-maps",
+    "test": "mocha --reporter mochawesome --reporter-options reportDir=test-results src/**/*spec.js --require @babel/register --recursive",
+    "prepare": "shx rm -rf dist && cross-env NODE_ENV=production babel src --out-dir dist --ignore '**/*.spec.js' --ignore 'src/app.js'"
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
+    ]
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "@babel/register": "^7.4.4",
+    "assert": "^1.4.1",
+    "cross-env": "^5.2.0",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.17.2",
+    "mocha": "^6.1.4",
+    "mochawesome": "^3.1.2",
+    "shx": "^0.3.2"
+  }
+}
